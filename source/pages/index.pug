@@ -1,0 +1,18 @@
+extends layout/main.pug
+
+include ../blocks/header/header.pug
+include ../blocks/main/main.pug
+include ../blocks/footer/footer.pug
+
+
+block title
+    title Главная страница
+        
+block pagecontent
+    +header()
+    
+    +main()
+    
+    +footer()
+    
+    

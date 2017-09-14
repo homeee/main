@@ -1,0 +1,25 @@
+npm init
+
+npm i gulp --save-dev
+
+npm i gulp-sass --save-dev
+
+npm i gulp-pug --save-dev
+
+npm i gulp-autoprefixer --save-dev
+
+npm i gulp-plumber--save-dev
+
+npm i browser-sync --save-dev
+
+npm i gulp-cssnano--save-dev
+
+npm i gulp-concat--save-dev
+
+npm i gulp-load-plugins --save-dev
+
+npm i -D colors
+
+
+
+

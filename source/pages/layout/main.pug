@@ -1,0 +1,23 @@
+//include ../pages/layout/mixins.pug
+//block variables
+doctype html (lang="ru-RU")
+html
+    head
+        meta(charser="Utf-8")
+        meta(http-equiv="X-UA-Compatible" content="IE=edge")
+        meta(name="viewport" content="width=device-width, initial-scale=1")
+        
+        
+        link(rel='stylesheet', href='css/bootstrap.min.css')
+        link(rel='stylesheet', href='css/bootstrap-theme.min.css')
+        ink(rel='stylesheet', href='css/jquery-ui.min.css')
+        link(rel='stylesheet', href='css/main.css')
+        
+        block title
+            title Тестовая страница
+        body
+            block pagecontent
+            script(src="js/jquery-3.1.1.min.js")
+            script(src="js/jquery-ui.min.js")
+            script(src="js/bootstrap.min.js")
+            script(src="js/script.js")
