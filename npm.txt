@@ -20,6 +20,14 @@ npm i gulp-load-plugins --save-dev
 
 npm i -D colors
 
+npm i gulp-svgmin --save-dev
 
+npm i gulp-cheerio --save-dev
+
+npm i gulp-replace --save-dev
+
+npm i gulp-svg-sprite --save-dev
+
+npm i gulp-tinypng --save-dev
 
 
