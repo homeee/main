@@ -72,14 +72,7 @@ gulp.task('svg', function() {
             .pipe(gulp.dest('./public/img/'));
     });
 
-gulp.task('libsJS:dev', function() {
-    return gulp.src(['node_modules/svg4everybody/dist/svg4everybody.min.js'])
-        .pipe(plugins.concat('libs.min.js'))
-        .pipe(gulp.dest('./public/js/'))
-        .pipe(browserSync.reload({
-            stream: true
-        }));
-});
+
 
 gulp.task("public", ["browser-sync"], function() {
     gulp.watch(["./source/sass/main.sass", "./source/**/*.sass"], ["sass"]); 
