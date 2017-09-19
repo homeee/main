@@ -111,8 +111,8 @@ gulp.task('svg:copy', function(){
 
 //сжатие img и перемещение в папку build
 gulp.task('img', function(){
-    return gulp.src('./public/img/**/*.{png,jpg,gif}')
-        .pipe(plugins.tinypng(uvcWUMZgE7KYRaeNS1O27mla6kFg_ihU))
+    return gulp.src('./public/img/general/**/*.{png,jpg,gif}')
+        .pipe(plugins.tinypng('api_key'))
         .pipe(gulp.dest('./build/img/'));
 });
     
