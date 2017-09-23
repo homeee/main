@@ -6,15 +6,11 @@ var pug             = require("gulp-pug");
 var autoprefixer    = require("gulp-autoprefixer");
 var plumber         = require('gulp-plumber');
 var browserSync     = require('browser-sync');
-var cssnano         = require('gulp-cssnano');
-var uglifyjs        = require('gulp-uglifyjs');
-var concat	        = require('gulp-concat');
 var gulpLoadPlugins = require('gulp-load-plugins'),
             plugins = gulpLoadPlugins();
 
 
                         /********default*********/  
-                        
                         
 //преобразование css в sass
 gulp.task("sass", function() {
@@ -74,14 +70,15 @@ gulp.task('svg', function() {
             .pipe(gulp.dest('./public/img/'));
     });
 
+//преобразование .js файлов из всех блоков в один main.js
 gulp.task('js:copy',  function() {
     return gulp.src(['./source/**/*.js',])
-        .pipe(concat('main.js'))
+        .pipe(plugins.concat('main.js'))
         .pipe(gulp.dest('./public/js/'))
         .pipe(browserSync.reload({stream: true}));
 });
 
-
+//слежение за файлами
 gulp.task("public", ["browser-sync"], function() {
     gulp.watch(["./source/sass/main.sass", "./source/**/*.sass"], ["sass"]); 
     gulp.watch("./source/**/*.pug", ["pages"]);
@@ -93,28 +90,26 @@ gulp.task("public", ["browser-sync"], function() {
 gulp.task("watch", ["pages", "svg", "js:copy", "sass", "public"]); // дефолтный таск
 
 
-
                         /********build*********/
-
-
-
+                        
 //cобираем все CSS библиотеки в один файл 
 gulp.task('libscss:build', function(){
     return gulp.src([
         'public/css/*.css',
     ])
-        .pipe(concat('libs.min.css'))
-        .pipe(cssnano())
+        .pipe(plugins.concat('libs.min.css'))
+        .pipe(plugins.cssnano())
         .pipe(gulp.dest('build/css/'))
 });
 
 //cобираем все js библиотеки в один файл 
 gulp.task('libsJS:build', function() {
     return gulp.src(
-        ['public/js/*.js'], 
+        ['public/js/jquery-3.2.1.min.js',
+        'public/js/*.js'], 
         ['node_modules/svg4everybody/dist/svg4everybody.min.js'] )
-        .pipe(concat('libs.min.js'))
-        .pipe(uglifyjs())
+        .pipe(plugins.concat('libs.min.js'))
+        .pipe(plugins.uglifyjs())
         .pipe(gulp.dest('build/js/'))
 });
 
@@ -124,7 +119,8 @@ gulp.task('svg:copy', function(){
         .pipe(gulp.dest('./build/img/symbol/'));
 });
 
-gulp.task('index:copy', function(){
+//копируем index в папку build
+gulp.task('index:copy', function(){  
     return gulp.src('./public/index.html')
         .pipe(gulp.dest('./build'));
 });
@@ -132,7 +128,7 @@ gulp.task('index:copy', function(){
 //сжатие img и перемещение в папку build
 gulp.task('img', function(){
     return gulp.src('./public/img/general/**/*.{png,jpg,gif}')
-        .pipe(plugins.tinypng('uvcWUMZgE7KYRaeNS1O27mla6kFg_ihU'))
+        .pipe(plugins.tinypng('api_key'))
         .pipe(gulp.dest('./build/img/'));
 });
     
