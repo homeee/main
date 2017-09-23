@@ -34,6 +34,7 @@
     "gulp-svgmin": "^1.2.4",
     "gulp-tinypng": "^1.0.2",
     "gulp-uglifyjs": "^0.6.2",
-    "svg": "^0.1.0"
+    "svg": "^0.1.0",
+    "svg4everybody": "^2.1.9"
   }
 }

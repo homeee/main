@@ -17,7 +17,7 @@ const BLOCKS_DIR = path.join(__dirname, 'source/blocks');
 const fileSources = {
 	pug: 'mixin {blockName}()\n\t.{blockName}\n\t\t| {blockName}\n',
 	sass: '.{blockName} \n\tdisplay: block\n',
-	js	: '// .{blockName} scripts goes here'
+	js	: '// .{blockName} scripts goes here \n $(document).ready(function(){\n });'
 };
 
 function validateBlockName(blockName) {

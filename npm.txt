@@ -30,4 +30,5 @@ npm i gulp-svg-sprite --save-dev
 
 npm i gulp-tinypng --save-dev
 
+npm i svg4everybody --save-dev
 

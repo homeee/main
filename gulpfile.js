@@ -11,9 +11,11 @@ var uglifyjs        = require('gulp-uglifyjs');
 var concat	        = require('gulp-concat');
 var gulpLoadPlugins = require('gulp-load-plugins'),
             plugins = gulpLoadPlugins();
-        
 
-  
+
+                        /********default*********/  
+                        
+                        
 //преобразование css в sass
 gulp.task("sass", function() {
     gulp.src("./source/sass/main.sass") // говорим какой файл взять
@@ -72,19 +74,32 @@ gulp.task('svg', function() {
             .pipe(gulp.dest('./public/img/'));
     });
 
+gulp.task('js:copy',  function() {
+    return gulp.src(['./source/**/*.js',])
+        .pipe(concat('main.js'))
+        .pipe(gulp.dest('./public/js/'))
+        .pipe(browserSync.reload({stream: true}));
+});
 
 
 gulp.task("public", ["browser-sync"], function() {
     gulp.watch(["./source/sass/main.sass", "./source/**/*.sass"], ["sass"]); 
     gulp.watch("./source/**/*.pug", ["pages"]);
     gulp.watch("./public/img/svg/*.svg", ["svg"]);
+    gulp.watch(["./pubic/js/main.js", "./source/**/*.js"], ["js:copy"]);
     
 });
 
-gulp.task("watch", ["pages", "svg", "sass", "public"]); // дефолтный 
+gulp.task("watch", ["pages", "svg", "js:copy", "sass", "public"]); // дефолтный таск
+
+
+
+                        /********build*********/
+
+
 
 //cобираем все CSS библиотеки в один файл 
-gulp.task('libscss', function(){
+gulp.task('libscss:build', function(){
     return gulp.src([
         'public/css/*.css',
     ])
@@ -94,10 +109,10 @@ gulp.task('libscss', function(){
 });
 
 //cобираем все js библиотеки в один файл 
-gulp.task('libsjs', function(){
-    return gulp.src([
-        'public/js/*.js',
-    ])
+gulp.task('libsJS:build', function() {
+    return gulp.src(
+        ['public/js/*.js'], 
+        ['node_modules/svg4everybody/dist/svg4everybody.min.js'] )
         .pipe(concat('libs.min.js'))
         .pipe(uglifyjs())
         .pipe(gulp.dest('build/js/'))
@@ -106,14 +121,19 @@ gulp.task('libsjs', function(){
 //копируем svg-sprite в папку build
 gulp.task('svg:copy', function(){
     return gulp.src('./public/img/symbol/*.svg')
-        .pipe(gulp.dest('./build/img/svg/'));
+        .pipe(gulp.dest('./build/img/symbol/'));
+});
+
+gulp.task('index:copy', function(){
+    return gulp.src('./public/index.html')
+        .pipe(gulp.dest('./build'));
 });
 
 //сжатие img и перемещение в папку build
 gulp.task('img', function(){
     return gulp.src('./public/img/general/**/*.{png,jpg,gif}')
-        .pipe(plugins.tinypng('api_key'))
+        .pipe(plugins.tinypng('uvcWUMZgE7KYRaeNS1O27mla6kFg_ihU'))
         .pipe(gulp.dest('./build/img/'));
 });
     
-gulp.task("build", ["libscss", "libsjs", "svg:copy", "img"]); //таск build
+gulp.task("build", ["libscss:build", "libsJS:build", "index:copy" ,"svg:copy", "img"]); //таск build
