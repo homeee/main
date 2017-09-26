@@ -69,6 +69,8 @@ gulp.task('svg', function() {
                 }
             }))
             .pipe(gulp.dest('./public/img/'));
+            
+            
     });
 
 
@@ -84,8 +86,8 @@ gulp.task('js:copy',  function() {
 gulp.task("public", ["browser-sync"], function() {
     gulp.watch(["./source/sass/main.sass", "./source/**/*.sass"], ["sass"]); 
     gulp.watch("./source/**/*.pug", ["pages"]);
-    gulp.watch("./public/img/svg/*.svg", ["svg"]);
-    gulp.watch(["./pubic/js/main.js", "./source/**/*.js"], ["js:copy"]);
+    gulp.watch("./public/img/svg/*.svg", ["svg"], browserSync.reload);
+    gulp.watch(["./pubic/js/main.js", "./source/**/*.js"], ["js:copy"], browserSync.reload);
 });
 
 gulp.task("watch", ["pages", "svg", "js:copy", "sass", "public"]); // дефолтный таск
@@ -125,7 +127,11 @@ gulp.task('index:copy', function(){
     return gulp.src('./public/index.html')
         .pipe(gulp.dest('./build'));
 });
-
+//копируем fonts в папку build
+gulp.task('fonts:copy', function(){
+    return gulp.src('./public/fonts/**/*.{ttf,woff,eot}')
+        .pipe(gulp.dest('./build/fonts/'));
+});
 //сжатие img и перемещение в папку build
 gulp.task('img', function(){
     return gulp.src('./public/img/general/**/*.{png,jpg,gif}')
@@ -133,4 +139,4 @@ gulp.task('img', function(){
         .pipe(gulp.dest('./build/img/'));
 });
     
-gulp.task("build", ["libscss:build", "libsJS:build", "index:copy" ,"svg:copy", "img"]); //таск build
+gulp.task("build", ["libscss:build", "libsJS:build", "fonts:copy", "index:copy" ,"svg:copy", "img"]); //таск build
