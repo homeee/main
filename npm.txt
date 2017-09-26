@@ -10,6 +10,8 @@ npm i gulp-autoprefixer --save-dev
 
 npm i gulp-plumber--save-dev
 
+npm i gulp-group-css-media-queries --save-dev
+
 npm i browser-sync --save-dev
 
 npm i gulp-cssnano--save-dev
@@ -31,4 +33,6 @@ npm i gulp-svg-sprite --save-dev
 npm i gulp-tinypng --save-dev
 
 npm i svg4everybody --save-dev
+
+npm i smart-grid
 

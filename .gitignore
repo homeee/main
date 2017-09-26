@@ -1,0 +1,5 @@
+
+.gulp/
+.idea/
+.gitignore/
+node_modules/

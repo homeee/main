@@ -1,12 +1,16 @@
 body {
   width: 100%;
-  height: 100%; }
+  height: 100%;
+}
 
 header {
-  display: block; }
+  display: block;
+}
 
 main {
-  display: block; }
+  display: block;
+}
 
 footer {
-  display: block; }
+  display: block;
+}

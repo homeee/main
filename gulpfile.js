@@ -6,9 +6,9 @@ var pug             = require("gulp-pug");
 var autoprefixer    = require("gulp-autoprefixer");
 var plumber         = require('gulp-plumber');
 var browserSync     = require('browser-sync');
+var gcmq            = require('gulp-group-css-media-queries');
 var gulpLoadPlugins = require('gulp-load-plugins'),
             plugins = gulpLoadPlugins();
-
 
                         /********default*********/  
                         
@@ -20,6 +20,7 @@ gulp.task("sass", function() {
         .pipe(autoprefixer(['last 15 versions', '> 1%', 'ie 8', 'ie 7'], {
             cascade: true
         }))
+        .pipe(gcmq())
         .pipe(gulp.dest("./public/css/")) //задаем папку куда вставлять 
         .pipe(browserSync.reload({stream: true}));
 });
@@ -70,6 +71,7 @@ gulp.task('svg', function() {
             .pipe(gulp.dest('./public/img/'));
     });
 
+
 //преобразование .js файлов из всех блоков в один main.js
 gulp.task('js:copy',  function() {
     return gulp.src(['./source/**/*.js',])
@@ -84,7 +86,6 @@ gulp.task("public", ["browser-sync"], function() {
     gulp.watch("./source/**/*.pug", ["pages"]);
     gulp.watch("./public/img/svg/*.svg", ["svg"]);
     gulp.watch(["./pubic/js/main.js", "./source/**/*.js"], ["js:copy"]);
-    
 });
 
 gulp.task("watch", ["pages", "svg", "js:copy", "sass", "public"]); // дефолтный таск
@@ -128,7 +129,7 @@ gulp.task('index:copy', function(){
 //сжатие img и перемещение в папку build
 gulp.task('img', function(){
     return gulp.src('./public/img/general/**/*.{png,jpg,gif}')
-        .pipe(plugins.tinypng('api_key'))
+        .pipe(plugins.tinypng('uvcWUMZgE7KYRaeNS1O27mla6kFg_ihU'))
         .pipe(gulp.dest('./build/img/'));
 });
     
