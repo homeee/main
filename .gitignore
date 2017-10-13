@@ -3,3 +3,4 @@
 .idea/
 .gitignore/
 node_modules/
+gulpfile.js
