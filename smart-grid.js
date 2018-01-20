@@ -4,37 +4,35 @@ var smartgrid = require('smart-grid');
 var settings = {
     outputStyle: 'sass', /* less || scss || sass || styl */
     columns: 12, /* number of grid columns */
-    offset: "30px", /* gutter width px || % */
+    offset: '30px', /* gutter width px || % */
+    mobileFirst: false, /* mobileFirst ? 'min-width' : 'max-width' */
     container: {
         maxWidth: '1200px', /* max-width оn very large screen */
         fields: '30px' /* side fields */
     },
     breakPoints: {
         lg: {
-            'width': '1100px', /* -> @media (max-width: 1100px) */
-            'fields': '30px' /* side fields */
+            width: '1100px', /* -> @media (max-width: 1100px) */
         },
         md: {
-            'width': '960px',
-            'fields': '15px'
+            width: '960px'
         },
         sm: {
-            'width': '780px',
-            'fields': '15px'
+            width: '780px',
+            fields: '15px' /* set fields only if you want to change container.fields */
         },
         xs: {
-            'width': '560px',
-            'fields': '15px'
+            width: '560px'
         }
-        /* 
+        /*
         We can create any quantity of break points.
 
         some_name: {
-            some_width: 'Npx',
-            some_offset: 'N(px|%)'
+            width: 'Npx',
+            fields: 'N(px|%|rem)',
+            offset: 'N(px|%|rem)'
         }
         */
     }
 };
-
 smartgrid('./source/sass/helpers/', settings);

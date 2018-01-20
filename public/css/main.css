@@ -1,16 +1,11 @@
-body {
-  width: 100%;
-  height: 100%;
+body
+{
+    height: 100%;
 }
 
-.header {
-  display: block;
-}
-
-main {
-  display: block;
-}
-
-footer {
-  display: block;
+body,
+footer,
+main
+{
+    width: 100%;
 }

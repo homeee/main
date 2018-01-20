@@ -1,38 +1,45 @@
-npm init
-
-npm i gulp --save-dev
-
-npm i gulp-sass --save-dev
-
-npm i gulp-pug --save-dev
-
-npm i gulp-autoprefixer --save-dev
-
-npm i gulp-plumber--save-dev
-
-npm i gulp-group-css-media-queries --save-dev
+////////////////////////////////////////////////
 
 npm i browser-sync --save-dev
 
-npm i gulp-cssnano--save-dev
+npm i gulp-group-css-media-queries --save-dev
 
-npm i gulp-concat--save-dev
-
-npm i gulp-load-plugins --save-dev
-
-npm i -D colors
-
-npm i gulp-svgmin --save-dev
+npm i gulp-autoprefixer --save-dev
 
 npm i gulp-cheerio --save-dev
 
+npm i gulp-concat --save-dev
+
+npm i gulp-csscomb --save-dev
+
+npm install gulp-csso --save-dev
+
+npm i gulp-cssnano --save-dev
+
+npm i gulp-load-plugins --save-dev
+
+npm i gulp-notify --save-dev
+
+npm i gulp-pug --save-dev
+
 npm i gulp-replace --save-dev
+
+npm i gulp-sass --save-dev
 
 npm i gulp-svg-sprite --save-dev
 
+npm i gulp-svgmin --save-dev
+
 npm i gulp-tinypng --save-dev
+
+npm i gulp-uglifyjs --save-dev
+
+npm install gulp@next --save-dev
+
+npm install --save-dev normalize.css
 
 npm i svg4everybody --save-dev
 
 npm i smart-grid
 
+npm i -D colors
